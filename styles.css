@@ -1,5 +1,6 @@
 body {
     user-select: none;
-    background: #111;
+    background: #222;
     color: #FFF;
+    font-family: "Sofia", sans-serif;
 }
