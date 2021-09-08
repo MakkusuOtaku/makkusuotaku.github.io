@@ -1,30 +1,26 @@
 var projectsElement;
-
-const projects = [
-    {
-        name: "mc-printer"
-    }
-];
+var projects;
 
 async function loadProjects() {
     let response = await fetch('data/projects.json');
-    let data = await response.json();
-    console.log(data);
+    projects = await response.json();
+    
+    for (key of Object.keys(projects)) {
+        createProjectElement(key);
+    }
 }
 
-function createProjectElement(info) {
+function createProjectElement(name) {
     let card = document.createElement('div');
     card.className = "card";
 
-    card.innerText = info.name;
+    card.innerText = name;
 
     projectsElement.appendChild(card);
 }
 
 addEventListener('DOMContentLoaded', ()=>{
     projectsElement = document.querySelector('#projects');
-    
-    for (project of projects) {
-        createProjectElement(project);
-    }
+
+    loadProjects();
 });
