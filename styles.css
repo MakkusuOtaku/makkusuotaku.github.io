@@ -1,3 +1,5 @@
-* {
+body {
     user-select: none;
+    background: #111;
+    color: #FFF;
 }
