@@ -1,6 +1,42 @@
 body {
     user-select: none;
-    background: #222;
-    color: #FFF;
     font-family: "Sofia", sans-serif;
+
+    background-image: url("images/background.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    margin: 0;
+}
+
+#header {
+    background: #FFF;
+    padding: 1em;
+    font-size: 1.2rem;
+}
+
+#projects {
+    background: #FFF;
+    padding: 1em;
+
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-rows: 240px;
+}
+
+.card {
+    background: #DDD;//url('images/project-bg.png');
+    //grid-row: span 2 / auto;
+    border-radius: 5%;
+
+    color: #FFF;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    box-shadow: 5px 5px 20px -5px #0006;
 }
