@@ -12,6 +12,10 @@ body {
 }
 
 #header {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20vw;
+
     padding: 10vh;
     font-size: 1.2rem;
     color: #FFF;
