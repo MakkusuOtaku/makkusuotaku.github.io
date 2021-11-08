@@ -23,6 +23,10 @@ body {
     padding: 1em;
 }
 
+.project-link {
+    text-decoration: none;
+}
+
 .project-name {
     font-size: 1.5em;
     font-weight: bold;
@@ -35,6 +39,8 @@ body {
     padding-top: 1em;
 }
 
-.project-link {
-    text-decoration: none;
+.project-updated {
+    font-size: 0.8em;
+    text-align: center;
+    color: #FFF;
 }
