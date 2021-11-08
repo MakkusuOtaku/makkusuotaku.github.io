@@ -1,32 +1,10 @@
 body {
     user-select: none;
-    font-family: "Sofia", sans-serif;
-
-    background-image: url("images/background.png");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    margin: 0;
-}
-
-#header {
-    margin-left: auto;
-    margin-right: auto;
-    width: 20vw;
-
-    padding: 10vh;
-    font-size: 1.2rem;
-    color: #FFF;
-    text-shadow: 1px 1px 2px #000;
-    font-size: 5rem;
-    text-align: center;
-    vertical-align: middle;
+    background: radial-gradient(circle, #222, #111);
+    font-family: 'Roboto', sans-serif;
 }
 
 #projects {
-    background: #FFF;
     padding: 1em;
 
     display: grid;
@@ -35,16 +13,28 @@ body {
     grid-auto-rows: 240px;
 }
 
-.card {
-    background: #DDD;//url('images/project-bg.png');
-    //grid-row: span 2 / auto;
+.project {
+    background: #0003;
     border-radius: 5%;
-
     color: #FFF;
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 1em;
+}
 
-    box-shadow: 5px 5px 20px -5px #0006;
+.project-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.project-description {
+    font-size: 1em;
+    text-align: center;
+    padding-top: 1em;
+}
+
+.project-link {
+    text-decoration: none;
 }
