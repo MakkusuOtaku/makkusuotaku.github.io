@@ -13,18 +13,13 @@ body {
     grid-auto-rows: 240px;
 }
 
-.project {
+.project-link {
+    text-decoration: none;
+
     background: #0003;
     border-radius: 5%;
     color: #FFF;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     padding: 1em;
-}
-
-.project-link {
-    text-decoration: none;
 }
 
 .project-name {

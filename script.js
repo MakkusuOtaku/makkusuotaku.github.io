@@ -28,12 +28,14 @@ async function loadProjects() {
         projectDiv.innerHTML = `
             <div class="project-name">${project.name}</div>
             <div class="project-description">${project.description}</div>
-            <div ="project-stats">
+            <div class="project-stats">
                 <div class="project-stars">${project.stargazers_count}</div>
                 <div class="project-forks">${project.forks_count}</div>
-                <div class="project-updated"> I don't know. </div>
             </div>
+            <div class="project-updated"> I don't know. </div>
         `;
+
+        //document.getElementById('projects').appendChild(projectDiv);
 
         // Put project inside of a tag with link to the project (open in new tab)
         let projectLink = document.createElement('a');
@@ -41,7 +43,6 @@ async function loadProjects() {
         projectLink.href = project.html_url;
         projectLink.target = '_blank';
         projectLink.appendChild(projectDiv);
-
 
         document.getElementById('projects').appendChild(projectLink);
 
