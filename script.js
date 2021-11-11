@@ -1,5 +1,22 @@
 var projects;
 
+async function loadImage(repositoryName) {
+    let url = `https://raw.githubusercontent.com/MakkusuOtaku/${repositoryName}/master/README.md`;
+    let response = await fetch(url);
+    let readme = await response.text();
+
+    // Get the first image in the readme
+    let image = readme.split('\n').find(line => line.startsWith('!['));
+    
+    // If there is an image, get the image url
+    if (image) {
+        image = image.split('(')[1].split(')')[0];
+        return image;
+    }
+
+    return 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60';
+}
+
 async function loadProjects() {
     let response = await fetch('https://api.github.com/users/MakkusuOtaku/repos');
     projects = await response.json();
@@ -24,8 +41,10 @@ async function loadProjects() {
         }
 
         let timeSinceLastUpdate = new Date() - new Date(project.updated_at);
+        let imageURL = await loadImage(project.name);
 
         projectDiv.innerHTML = `
+            <img class="project-image" src="${imageURL}">
             <div class="project-name">${project.name}</div>
             <div class="project-description">${project.description}</div>
             <div class="project-stats">
