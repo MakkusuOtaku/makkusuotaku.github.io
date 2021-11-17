@@ -1,7 +1,7 @@
 var projects;
 
-async function loadImage(repositoryName) {
-    let url = `https://raw.githubusercontent.com/MakkusuOtaku/${repositoryName}/master/README.md`;
+async function loadImage(repo) {
+    let url = `https://raw.githubusercontent.com/MakkusuOtaku/${repo.name}/${repo.default_branch}/README.md`;
     let response = await fetch(url);
     let readme = await response.text();
 
@@ -15,6 +15,42 @@ async function loadImage(repositoryName) {
     }
 
     return 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60';
+}
+
+function getLink(repo) {
+    if (repo.has_pages) {
+        return `https://makkusuotaku.github.io/${repo.name}`;
+    } else {
+        return repo.html_url;
+    }
+}
+
+async function generateElement(project) {
+    let description = project.description || 'No description provided';
+    let image = await loadImage(project);
+    let link = getLink(project);
+
+    let element = document.createElement('a');
+    element.className = 'project-link';
+    element.href = link;
+    element.target = '_blank';
+
+    element.innerHTML = `
+        <div class="project">
+            <img class="project-image" src="${image}">
+            <div class="project-name">${project.name}</div>
+            <div class="project-description">${description}</div>
+            <div class="project-stats">
+                <div class="project-stars">${project.stargazers_count}</div>
+                <div class="project-forks">${project.forks_count}</div>
+            </div>
+            <div class="project-updated"> I don't know. </div>
+        </div>
+    `;
+
+    document.getElementById('projects').appendChild(element);
+
+    delete element;
 }
 
 async function loadProjects() {
@@ -33,39 +69,7 @@ async function loadProjects() {
     });
     
     for (project of projects) {
-        let projectDiv = document.createElement('div');
-        projectDiv.classList.add('project');
-
-        if (!project.description) {
-            project.description = 'No description provided';
-        }
-
-        let timeSinceLastUpdate = new Date() - new Date(project.updated_at);
-        let imageURL = await loadImage(project.name);
-
-        projectDiv.innerHTML = `
-            <img class="project-image" src="${imageURL}">
-            <div class="project-name">${project.name}</div>
-            <div class="project-description">${project.description}</div>
-            <div class="project-stats">
-                <div class="project-stars">${project.stargazers_count}</div>
-                <div class="project-forks">${project.forks_count}</div>
-            </div>
-            <div class="project-updated"> I don't know. </div>
-        `;
-
-        //document.getElementById('projects').appendChild(projectDiv);
-
-        // Put project inside of a tag with link to the project (open in new tab)
-        let projectLink = document.createElement('a');
-        projectLink.className = 'project-link';
-        projectLink.href = project.html_url;
-        projectLink.target = '_blank';
-        projectLink.appendChild(projectDiv);
-
-        document.getElementById('projects').appendChild(projectLink);
-
-        delete projectDiv;
+        await generateElement(project);
     }
 }
 
