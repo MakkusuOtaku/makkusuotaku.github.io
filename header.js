@@ -43,6 +43,7 @@ for (let x = 0; x < renderDistance; x++) {
 }
 
 terrainGeometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+terrainGeometry.computeVertexNormals();
 
 const terrain = new THREE.Mesh(terrainGeometry, terrainMaterial);
 terrain.position.x = -renderDistance / 2;
