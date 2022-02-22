@@ -37,7 +37,9 @@ async function generateElement(project) {
 
     element.innerHTML = `
         <div class="project">
-            <img class="project-image" src="${image}" loading="lazy">
+            <div class="image-container">
+                <img class="project-image" src="${image}" loading="lazy">
+            </div>
             <div class="project-name">${project.name}</div>
             <div class="project-description">${description}</div>
             <div class="project-stats">
