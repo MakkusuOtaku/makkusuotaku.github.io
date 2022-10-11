@@ -6,22 +6,32 @@
         <link rel="icon" href="icon.png">
         <title>Makkusu Otaku</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E95KK61E71"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-E95KK61E71');
+        </script>
+        <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     </head>
     <body>
-        <!-- I'm tired. -->
-        <div id="header-container">
-            <div id="header">
-                <nobr>Hello, I'm <span id="name">Makkusu</span>.</nobr>
-                Welcome to my website.
+        <div id="bg"></div>
+        <div id="header">
+            <div id="name">Makkusu Otaku</div>
+            <div id="categories">
+                <button>projects</button>
+                <button>minecraft</button>
+                <button>tutorials</button>
             </div>
-            <!--canvas></canvas-->
+            <div id="info">
+                <button>about</button>
+                <button>contact</button>
+            </div>
         </div>
-        <main>
-        <div class="group-name">GitHub Projects</div>
         <div id="projects"></div>
-        </main>
-        <script type="module" src="header.js"></script>
-        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="projects.js"></script>
     </body>
 </html>
